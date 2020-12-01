@@ -8,6 +8,10 @@ edition = "2018"
 name = "common"
 path = "src/lib.rs"
 
+[[bin]]
+name = "2020-01"
+path = "src/bin/2020/01.rs"
+
 [dependencies]
 md5 = "0.7.0"
 futures = "0.3.5"
