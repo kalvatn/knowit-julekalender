@@ -4,7 +4,7 @@ use common::io;
 use std::collections::HashSet;
 
 fn solve(input: &str) -> u32 {
-  let numbers:HashSet<u32> = input
+  let numbers: HashSet<u32> = input
     .split(",")
     .map(|line| line.parse::<u32>().unwrap())
     .collect();
@@ -12,7 +12,10 @@ fn solve(input: &str) -> u32 {
 }
 
 fn read_input() -> String {
-  io::read_input("https://julekalender-backend.knowit.no/challenges/1/attachments/numbers.txt", "2020-01")
+  io::read_input(
+    "https://julekalender-backend.knowit.no/challenges/1/attachments/numbers.txt",
+    "2020-01",
+  )
 }
 
 fn main() {
@@ -34,5 +37,4 @@ mod test {
   fn test_solve() {
     assert_eq!(solve(&read_input()), 81273);
   }
-
 }

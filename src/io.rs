@@ -8,10 +8,7 @@ use std::path::Path;
 pub async fn download_input(url: &str) -> Result<String, reqwest::Error> {
   println!("downloading input from {}", url);
   let client = Client::new();
-  let response = client
-    .get(url)
-    .send()
-    .await?;
+  let response = client.get(url).send().await?;
   let text = response.text().await?;
   Ok(text)
 }
