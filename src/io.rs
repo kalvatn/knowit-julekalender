@@ -1,15 +1,16 @@
-use reqwest::Client;
 use std::fs::File;
 use std::io;
 use std::io::Read;
 use std::path::Path;
 
-#[tokio::main]
-pub async fn download_input(url: &str) -> Result<String, reqwest::Error> {
+use reqwest::blocking::Client;
+use reqwest::Error;
+
+pub fn download_input(url: &str) -> Result<String, Error> {
   println!("downloading input from {}", url);
   let client = Client::new();
-  let response = client.get(url).send().await?;
-  let text = response.text().await?;
+  let response = client.get(url).send()?;
+  let text = response.text()?;
   Ok(text)
 }
 
