@@ -15,6 +15,9 @@ pub fn download_input(url: &str) -> Result<String, Error> {
 }
 
 pub fn read_input(url: &str, filename: &str) -> String {
+  if url.is_empty() {
+    panic!("empty url");
+  }
   let filepath = format!("inputs/{}", filename);
   let path = Path::new(&filepath);
   let file = match path.exists() {
