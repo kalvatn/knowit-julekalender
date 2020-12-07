@@ -15,14 +15,14 @@ pub fn download_input(url: &str) -> Result<String, Error> {
 }
 
 pub fn read_input(url: &str, filename: &str) -> String {
-  if url.is_empty() {
-    panic!("empty url");
-  }
   let filepath = format!("inputs/{}", filename);
   let path = Path::new(&filepath);
   let file = match path.exists() {
     true => File::open(path),
     false => {
+      if url.is_empty() {
+        panic!("empty url");
+      }
       let response = download_input(&url);
       let mut out = File::create(&path).expect("failed to create file");
       io::copy(&mut response.unwrap().as_bytes(), &mut out).expect("failed to copy contents");
